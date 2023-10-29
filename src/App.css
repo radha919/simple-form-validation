@@ -1,0 +1,32 @@
+/* CSS for the tabs */
+.tabs {
+  display: flex;
+  justify-content: center;
+  margin: 20px;
+}
+
+.tabs button {
+  padding: 10px 20px;
+  margin: 0 10px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.tabs button.active {
+  background-color: #007bff;
+  color: white;
+}
+
+/* CSS for the tab content */
+.add-user-tab, .search-user-tab {
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin: 20px;
+}
+
+.add-user-tab h2, .search-user-tab h2 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+     
