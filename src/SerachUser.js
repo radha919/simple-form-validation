@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 
-const SerachUser = ({users,setUsers}) => {
-   
-  
+const SerachUser = ({ users, setUsers }) => {
   const [searchName, setSearchName] = useState("");
   const [searchResults, setSearchResults] = useState([]);
-   
 
   const handleSearchUser = () => {
     const results = users.filter((user) =>
@@ -14,34 +11,42 @@ const SerachUser = ({users,setUsers}) => {
     setSearchResults(results);
   };
   return (
-    <div className="app">
-       
- 
-        <div className="search-user-tab">
-          <h2>Search User</h2>
+    <div className="app1">
+      <div className="search-user-tab">
+        <h2>Search User</h2>
+        <label>
+          Search by name
           <input
             type="text"
             value={searchName}
             onChange={(e) => setSearchName(e.target.value)}
+            
             placeholder="Search by Name"
           />
-          <button onClick={handleSearchUser}>Search</button>
-          {searchResults.length > 0 ? (
-            <div className="search-results">
-              <h3>Search Results:</h3>
-              <ul>
-                {searchResults.map((user, index) => (
-                  <li key={index}>
-                    {user.name}, {user.age}, {user.email}, {user.address}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ) : (
-            <div className="no-results">No results found.</div>
-          )}
+        </label>
+
+        <div className="btn">
+          <button className="btn-1" onClick={handleSearchUser}>
+            Search
+          </button>
         </div>
-      
+
+        {searchResults.length >0 ? (
+          <div className="search-results">
+            
+            <ul>
+              {searchResults.map((user, index) => (
+                <li key={index}>
+                  {user.name}, {user.age}, {user.email}, {user.address}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ) : 
+        (
+          <div className="no-results">No results found.</div>
+        )}
+      </div>
     </div>
   );
 };

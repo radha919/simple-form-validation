@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 const AddUser = ({ users, setUsers }) => {
-//   const [activeTab, setActiveTab] = useState("addUser");
+  
 
   const [newUser, setNewUser] = useState({
     name: "",
@@ -21,40 +21,70 @@ const AddUser = ({ users, setUsers }) => {
       setNewUser({ name: "", age: "", email: "", address: "" });
     }
   };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    alert("Form Submitted Successfully");
+  };
+
+  localStorage.setItem("users", JSON.stringify(users))
+
+  
+
   return (
-    <div className="app">
-      <div className="add-user-tab">
-        <h2>Add User</h2>
-        <input
-          type="text"
-          name="name"
-          value={newUser.name}
-          onChange={handleInputChange}
-          placeholder="Name"
-        />
-        <input
-          type="text"
-          name="age"
-          value={newUser.age}
-          onChange={handleInputChange}
-          placeholder="Age"
-        />
-        <input
-          type="text"
-          name="email"
-          value={newUser.email}
-          onChange={handleInputChange}
-          placeholder="Email"
-        />
-        <textarea
-          name="address"
-          value={newUser.address}
-          onChange={handleInputChange}
-          placeholder="Address"
-        />
-        <button onClick={handleAddUser}>Add User</button>
+    <form onSubmit={handleSubmit}>
+      <div className="app">
+        <div className="add-user-tab">
+          <h2>Add User</h2>
+          <label>
+            Enter your Name
+            <input
+              type="text"
+              name="name"
+              value={newUser.name}
+              onChange={handleInputChange}
+              placeholder="Name"
+            />
+          </label>
+
+          <label>
+            Enter your Age
+            <input
+              type="number"
+              name="age"
+              value={newUser.age}
+              onChange={handleInputChange}
+              placeholder="Age"
+            />
+          </label>
+
+          <label>
+            Enter your Email
+            <input
+              type="email"
+              name="email"
+              value={newUser.email}
+              onChange={handleInputChange}
+              placeholder="Email"
+            />
+          </label>
+
+          <label>
+            Enter your Address
+            <textarea
+              name="address"
+              value={newUser.address}
+              onChange={handleInputChange}
+              placeholder="Address"
+            />
+          </label>
+
+          <div className="btn">
+            <button onClick={handleAddUser}>Add User</button>
+          </div>
+        </div>
       </div>
-    </div>
+    </form>
   );
 };
 
